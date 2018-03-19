@@ -1,1 +1,13 @@
-<h1>welcome</h1>
+{%extends "base.html" %}
+{% load static%}
+
+{% block content %}
+{{ block.super}}
+<div class="container">
+     {% for name in name %}
+           <h2>{{name.name}}</h2>
+           <p>{{name.location}}</p>
+           <p>{{name.occupations_count}}</p>
+     {% endfor %}
+</div>
+{% endblock %}
