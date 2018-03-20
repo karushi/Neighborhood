@@ -1,0 +1,22 @@
+{%extends "base.html" %}
+{% load bootstrap4 %}
+{% block content %}
+
+<div class="container">
+        <div class="row">
+     <!-- Empty div -->
+     <div class="col-md-3"></div>
+     <div class="col-md-6">
+    <form  action="{%url 'post'%}" method="post">
+        {%csrf_token%}
+        {% bootstrap_form form %}
+        <div class="form-group">
+            <input class="btn btn-default btn-sm" type="submit" value="post">
+        </div>
+        <input type="hidden" name="next" value="{{next}}">
+    </form>
+
+</div>
+</div>
+</div>
+{%endblock%}
