@@ -1,8 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse,Http404
 from .models import  Neighbourhood,Business,User,Post
-
+from .form import PostForm
 # Create your views here.
 @login_required(login_url='/accounts/login/')
 def index(request):
@@ -27,7 +27,35 @@ def search_results(request):
 def edit_user(request):
     title = 'user'
     try:
+        
+        
+        
+        
+        
+        
+        
+        
+        
         user = User.objects.all()
     except User.DoesNotExist:
         raise Http404
     return render(request, 'user.html', {"title":title,"user":user})       
+
+
+@login_required(login_url='/accounts/login/')
+def post(request):
+    title = 'neighborhood |post'
+    post = Post.get_post()
+    current_user = request.user
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.posted_by = post
+            post.save()
+            return redirect('index')
+    else:
+        form = PostForm()
+        
+    return render(request,'post.html',{"title":title,"form":form})
