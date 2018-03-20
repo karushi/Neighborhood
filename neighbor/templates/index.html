@@ -5,9 +5,8 @@
 {{ block.super}}
 <div class="container">
      {% for name in name %}
-           <h2>{{name.name}}</h2>
-           <p>{{name.location}}</p>
-           <p>{{name.occupations_count}}</p>
+           <h2>{{name.title}}</h2>
+           <p>{{name.post}}</p>
      {% endfor %}
 </div>
 {% endblock %}
