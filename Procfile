@@ -1,1 +1,1 @@
-web: gunicorn neighbor.wsgi
+web: gunicorn neighborhood.wsgi
