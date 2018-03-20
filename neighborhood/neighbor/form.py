@@ -1,7 +1,13 @@
 from django import forms
-from .models import user
+from .models import Post,Neighbourhood,User,Business
 
-class user (forms.ModelForm):
+class UserForm (forms.ModelForm):
     class Meta:
-        model = Image
+        model = User
+        exclude = ['user']
+
+
+class PostForm(forms.ModelForm):
+    class Meta: 
+        model = Post       
         exclude = ['user']
